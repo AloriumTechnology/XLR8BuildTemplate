@@ -27,6 +27,7 @@
 
 `ifndef XLR8_SIM_SUPPORT_SV
  `define XLR8_SIM_SUPPORT_SV
+`timescale 1ns/1ps
 
 module xlr8_sim_support
 

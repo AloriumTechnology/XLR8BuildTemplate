@@ -41,21 +41,12 @@ module xlr8_board  #(parameter DESIGN_CONFIG = {28'd0, // 31:4: reserved
    wire        I2C_ENABLE; // More importantly; disable pullups when doing analog read on A4/A5
    // JTAG connector reused as digial IO. On that connector, pin 4 is power, pins 2&10 are ground
    //   and pin 8 selects between gpio (low) and jtag (high) modes and has a pulldown.
-  `ifdef JTAG_PIN_SHARE 
    wire        JT9; // external pullup. JTAG function is TDI
    wire        JT7; // no JTAG function
    wire        JT6; // no JTAG function
    wire        JT5; // external pullup. JTAG function is TMS
    wire        JT3; // JTAG function TDO
    wire        JT1; // external pulldown, JTAG function is TCK
-  `else
-   // For now, we haven't enabled JTAG pin sharing, so JTAGEN is available as a GPIO and JT7 and
-   //   JT6 are the only other pins available
-   wire        JTAGEN; // not being used for JTAG function
-   wire        JT7; // no JTAG function
-   wire        JT6; // no JTAG function
-   //wire      JT67; // Use JT6 and JT7 as differential pair?
-  `endif // !`ifdef JTAG_PIN_SHARE
    // Interface to EEPROM or other device in SOIC-8 spot on the board
    wire        SOIC7; // WP in the case of an 24AA128SM EEPROM
    wire        SOIC6; // SCL in the case of an 24AA128SM EEPROM
@@ -70,23 +61,7 @@ module xlr8_board  #(parameter DESIGN_CONFIG = {28'd0, // 31:4: reserved
                               .A\([0-9]*\) (DIG_IO[\1]),
     );*/
 
-   xlr8_top #(/*AUTOINSTPARAM*/
-              // Parameters
-              .DESIGN_CONFIG            (DESIGN_CONFIG),
-              .APP_XB0_ENABLE           (APP_XB0_ENABLE))
-      xlr8_top_inst (
-                    `ifdef JTAG_PIN_SHARE 
-                     .JT9               (JT9),
-                     .JT7               (JT7),
-                     .JT6               (JT6),
-                     .JT5               (JT5),
-                     .JT3               (JT3),
-                     .JT1               (JT1),
-                    `else
-                     .JTAGEN            (JTAGEN),
-                     .JT7               (JT7),
-                     .JT6               (JT6),
-                    `endif
+   xlr8_top xlr8_top_inst (
                      /*AUTOINST*/
                      // Outputs
                      .PIN13LED          (PIN13LED),
@@ -122,6 +97,12 @@ module xlr8_board  #(parameter DESIGN_CONFIG = {28'd0, // 31:4: reserved
                      .SOIC3             (SOIC3),
                      .SOIC2             (SOIC2),
                      .SOIC1             (SOIC1),
+                     .JT9               (JT9),
+                     .JT7               (JT7),
+                     .JT6               (JT6),
+                     .JT5               (JT5),
+                     .JT3               (JT3),
+                     .JT1               (JT1),
                      // Inputs
                      .Clock             (Clock),
                      .RESET_N           (RESET_N));

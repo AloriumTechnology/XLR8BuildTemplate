@@ -19,7 +19,7 @@ module xlr8_tb;
    //-------------------------------------------------------
    // Local Parameters
    //-------------------------------------------------------
-//   `include "avr_adr_pack.vh"
+   `include "avr_adr_pack.vh"
 
    //-------------------------------------------------------
    // Reg/Wire Declarations
@@ -34,11 +34,6 @@ module xlr8_tb;
    reg         RESET_N;                // To xlr8_inst0 of top.v
    reg         Clock;
 
-
-   //-------------------------------------------------------
-   // save simulation time by not doing boot restore
-   //-------------------------------------------------------
-   initial force xlr8_inst0.xlr8_top_inst.uc_top_wrp_vlog_inst.boot_restore_n = 1'b1;
 
    //-------------------------------------------------------
    // Generate clock
@@ -67,12 +62,6 @@ module xlr8_tb;
    `undef STRINGIFY
 `endif
 `define STRINGIFY(str) `"str`"
-
-   defparam xlr8_inst0.xlr8_top_inst.flashload_inst.flash_inst.onchip_flash_0.INIT_FILENAME_SIM = `STRINGIFY(`FLASH0_UFM_DAT);
-   initial begin
-      $display("INFO %m @ %t: Loading %s into flash",$time, `STRINGIFY(`FLASH0_UFM_DAT));
-   end
-
 
    //-------------------------------------------------------
    // Instantiate DUT
