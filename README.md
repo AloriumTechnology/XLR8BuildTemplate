@@ -17,6 +17,9 @@ The following steps can be used to build an OpenXLR8 design.
 2. In your Operating System's File Explorer
     1. Goto your Arduino/libraries folder
     2. Make a copy of the XLR8BuildTemplate folder and name the copy XLR8Build.
+        - (The library may have been downloaded as XLR8_Build. Still make a copy named XLR8Build)
+    3. The XLR8Core library may have been downloaded as XLR8_Core. If so, rename it to XLR8Core.
+        - (We have an open question to Arduino why these libraries are getting renamed and will update these instructions when it gets resolved)
 3. Customize the project
     1. For a minimal build (no XBs), nothing needs to be done here
     2. To use a single XB (The following steps use XLR8Servo as the example XB to instantiate)
