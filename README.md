@@ -3,13 +3,13 @@ Provides a template for the directory structure used to synthesize custom
  designs for XLR8
 The following steps can be used to build an OpenXLR8 design.
 
-TOOLS
+###TOOLS
 1. Download and install Quartus Tool available from Altera at http://dl.altera.com/?edition=lite
     1. This should include Modelsim-Altera Starter Edition and Max 10 FPGA support
     2. We've been using release 15.1. We'll move to 16.0 soon
     3. Quartus tools are only available for Windows and Linux. On Mac, you'll need to run a VM or some other method to get either a Windows or Linux operating system.
 
-PREP
+###PREP  
 1. In Arduino IDE
     1. Sketch->Include Library->Manage Libraries
     2. Filter your search for XLR8
@@ -29,7 +29,7 @@ PREP
         - Modify XLR8Build/extras/quartus/xlr8_top.qsf to read XB rtl files, and, if needed, XB sdc files
 4. Open XLR8Build/extras/quartus/xlr8_top.qpf with the Altera Quartus software (in windows you can simply double-click on xlr8_top.qpf in Windows Explorer)
 
-SIMULATION (Available on Windows. Linux coming soon. Not available on Mac)
+###SIMULATION (Available on Windows. Linux coming soon. Not available on Mac)
 1. In Arduino, select
     1. Board = Open XLR8
     2. Floating Point XB is used if you have the Floating Point XB but want to use software floating point anyway (for performance comparison perhaps). If you don't have the Floating Point XB, this setting don't matter.
@@ -46,14 +46,14 @@ SIMULATION (Available on Windows. Linux coming soon. Not available on Mac)
     3. You may want to stop the simulation, add some breakpoints or enter a number milli-seconds you would like to simulate, and then run-continue.
         - It is also possible for a sketch to control when the simulation finishes. The testbench watches the AVR's GPIOR1 register and if bit 7 is set, it will end the simulation at that point (and by convention report a passing status if bit 6 is also set). If your sketch doesn't set GPIOR1 (most sketches don't), the simulation will run until you hit the stop button. 
 
-SYNTHESIS (Available on Windows and Linux (Linux untested). Not available on Mac)
+###SYNTHESIS (Available on Windows and Linux (Linux untested). Not available on Mac)
 1. In Quartus, do Processing->Start Compilation (or simply click the blue triangle icon)
 2. In Quartus, do File->Convert Programming Files (This step will become automated, but for now it is a manual step)
     1. Open Conversion Setup Data->openxlr8.cof 
     2. Generate. Ok. Close.
 
 
-BURNING the FPGA IMAGE
+###BURNING the FPGA IMAGE
 1. In Arduino, select
     1. Board = Open XLR8
     2. "Floating Point XB" and "Upload Action" setting don't matter for this step
@@ -63,8 +63,8 @@ BURNING the FPGA IMAGE
     6. Copy the URL that is printed at the end of the status message, paste it into a web browser, and leave us any comments you may have.
 
 
-MORE HELP
+###MORE HELP
 1. Issues? Check the forums at http://forums.aloriumtech.com/
-2. Altera has both paid and free on-line training at https://www.altera.com/support/training/catalog.highResolutionDisplay.html?curriculum=Fundamentals Part 1
-3. An overview of the ModelSim HDL simulator is also available from Altera at https://www.altera.com/support/training/catalog.highResolutionDisplay.html?keywords=modelsim overview
+2. Altera has both paid and free on-line training at https://www.altera.com/support/training/catalog.highResolutionDisplay.html?curriculum=Fundamentals%20Part%201
+3. An overview of the ModelSim HDL simulator is also available from Altera at https://www.altera.com/support/training/catalog.highResolutionDisplay.html?keywords=modelsim%20overview
 
