@@ -35,7 +35,7 @@ The following steps can be used to build an OpenXLR8 design.
 ###SIMULATION (Available on Windows. Linux coming soon. Not available on Mac)
 1. In Arduino, select
     1. Board = Open XLR8
-    2. Floating Point XB is used if you have the Floating Point XB but want to use software floating point anyway (for performance comparison perhaps). If you don't have the Floating Point XB, this setting don't matter.
+    2. Floating Point XB = Enabled (Can set to disabled if you have the Floating Point XB but want to use software floating point anyway for some reason).
     3. FPGA Image = choose AVR frequency that matches the rtl and sdc file (16MHz if you haven't changed the rtl)
     4. Upload Action = Send Sketch to Quartus-Modelsim directory
     5. Port = doesn't matter for this step
