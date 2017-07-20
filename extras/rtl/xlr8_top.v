@@ -6,7 +6,7 @@
 //
 // File name:  : xlr8_top.v
 // Author      : Matt Weber
-// Contact     : matt@aloriumtech.com linkedin.com/in/mattweberdesign
+// Contact     : support@aloriumtech.com
 // Description : OpenXLR8 top module with no XBs included
 //
 //=================================================================
@@ -142,6 +142,7 @@ module xlr8_top
   logic [NUM_PINS-1:0]	xb_ddov;		// From xb_pinmux_inst of xlr8_xb_pinmux.v
   logic [NUM_PINS-1:0]	xb_pvoe;		// From xb_pinmux_inst of xlr8_xb_pinmux.v
   logic [NUM_PINS-1:0]	xb_pvov;		// From xb_pinmux_inst of xlr8_xb_pinmux.v
+  logic [NUM_PINS-1:0]  xb_pinx;                // To   xb_pinmux_inst of xlr8_xb_pinmux.v
   wire			xck_rcv;		// From iomux328_inst of xlr8_iomux328.v
   wire [7:0]		xlr8_clocks_dbusout;	// From clocks_inst of xlr8_clocks.v
   wire			xlr8_clocks_out_en;	// From clocks_inst of xlr8_clocks.v
@@ -353,6 +354,7 @@ module xlr8_top
 				.xb_ddov	(xb_ddov[19:0]),
 				.xb_pvoe	(xb_pvoe[19:0]),
 				.xb_pvov	(xb_pvov[19:0]),
+                                .xb_pinx        (xb_pinx[19:0]),
 				.pcint_irq	(pcmsk[23:0]),	 // Templated
 				.pcie0		(pcie0),
 				.pcie1		(pcie1),
