@@ -8,13 +8,15 @@
 source ../../../XLR8Core/extras/quartus/xlr8_top_core.qsf
 
 set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/xlr8_atmega328clone.qxp
+set_global_assignment -name SEARCH_PATH ../../../XLR8Core/extras/rtl
 
 # XB rtl
 #set_global_assignment -name VERILOG_FILE ../../../XLR8ExampleXB/extras/rtl/xlr8_examplexb.v
 
 # Top level rtl, etc.
-set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/xlr8_top.v
-set_global_assignment -name TOP_LEVEL_ENTITY xlr8_top
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../XLR8Core/extras/rtl/xlr8_alorium_top.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/xlr8_xb_openxlr8.v
+set_global_assignment -name TOP_LEVEL_ENTITY xlr8_alorium_top
 set_global_assignment -name SDC_FILE ../../../XLR8Core/extras/quartus/xlr8_top.sdc
 
 # Simulation setup

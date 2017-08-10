@@ -6,7 +6,7 @@
 //
 // File name:  : xlr8_top.v
 // Author      : Matt Weber
-// Contact     : matt@aloriumtech.com linkedin.com/in/mattweberdesign
+// Contact     : support@aloriumtech.com
 // Description : Simulation model of components on the XLR8
 //                board that we'd like to simulate, most importantly
 //                the XLR8 chip, but also various pullups and
