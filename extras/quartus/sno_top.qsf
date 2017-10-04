@@ -2,28 +2,28 @@
 # Copyright (c) 2016 Alorim Technology.  All right reserved.
 #==============================================================================
 #
-# File Name  : xlr8_top.qsf
+# File Name  : sno_top.qsf
 # Author     : Steve Phillips
 # Contact    : support@aloriumtech.com
 # Description:
 #
-# Quartus settings for XLR8 project
+# Quartus settings for XLR8 Sno project
 #  http://www.aloriumtech.com/xlr8
 #  https://github.com/AloriumTechnology
 #==============================================================================
 
-source ../../../XLR8Core/extras/quartus/xlr8_top_core.qsf
+source ../../../XLR8Core/extras/quartus/sno_top_core.qsf
 
 #==============================================================================
 # Set the values in this section based on the clock speed desired
 
-# Set values for DESIGN_CONFIG. Use 16MHz=8, 32MHz=10, 64MHz=12
-set_parameter -name DESIGN_CONFIG 8     # Use 16MHz=8 by default
+# Set values for DESIGN_CONFIG. USe 16MHz=104, 32MHz=106, 64MHz=108
+set_parameter -name DESIGN_CONFIG 104     # Use 16MHz=104 by default
 
 # Select JUST ONE of the following three choices!
-set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/xlr8_atmega328clone_16MHz.qxp
-#set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/xlr8_atmega328clone_32MHz.qxp
-#set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/xlr8_atmega328clone_64MHz.qxp
+set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/sno_atmega328clone_16MHz.qxp
+#set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/sno_atmega328clone_32MHz.qxp
+#set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/sno_atmega328clone_64MHz.qxp
 #------------------------------------------------------------------------------
 
 
@@ -33,6 +33,7 @@ set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/xlr8_atmeg
 # XB rtl
 #set_global_assignment -name VERILOG_FILE ../../../XLR8Build/extras/rtl/xlr8_examplexb.v
 #------------------------------------------------------------------------------
+
 
 
 #==============================================================================
