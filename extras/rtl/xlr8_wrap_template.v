@@ -5,7 +5,7 @@
 //  $Id:  $
 //=================================================================
 //
-// File name:  : xlr8_xb.v
+// File name:  : xlr8_wrap_template.v
 // Author      : Steve Phillips
 // Description : Template for wrapping user XB in glue logic needed
 //               to interface cleanly with AVR core
@@ -34,21 +34,18 @@ module xlr8_xb  // NOTE: Change the module name to match your design
     // while other ports could be added, these are required.
     //  
     // Clock and Reset
-    input        clk,       // Clock
-    input        rstn,      // Reset
-    input        clken,     // Clock Enable
+    input        clk, //       Clock
+    input        rstn, //      Reset
+    input        clken, //     Clock Enable
     // I/O 
-    input [5:0]  adr,       // Reg Address
-    input [7:0]  dbus_in,   // Data Bus Input
-    output [7:0] dbus_out,  // Data Bus Output
+    input [7:0]  dbus_in, //   Data Bus Input
+    output [7:0] dbus_out, //  Data Bus Output
     output       io_out_en, // IO Output Enable
-    input        iore,      // IO Reade Enable
-    input        iowe,      // IO Write Enable
     // DM
-    input [7:0]  ramadr,    // RAM Address
-    input        ramre,     // RAM Read Enable
-    input        ramwe,     // RAM Write Enable
-    input        dm_sel,    // DM Select
+    input [7:0]  ramadr, //    RAM Address
+    input        ramre, //     RAM Read Enable
+    input        ramwe, //     RAM Write Enable
+    input        dm_sel, //    DM Select
     );
    
    //======================================================================
@@ -90,24 +87,24 @@ module xlr8_xb  // NOTE: Change the module name to match your design
    //  Control select
    //
    // For each register interface, do control select based on address
-   assign ctrl_sel = (dm_sel && ramadr == CTRL_ADDR);
-   assign ctrl_we  = ctrl_sel && (ramwe);
-   assign ctrl_re  = ctrl_sel && (ramre);
+   assign ctrl_sel = dm_sel && (ramadr == CTRL_ADDR);
+   assign ctrl_we  = ctrl_sel && ramwe;
+   assign ctrl_re  = ctrl_sel && ramre;
    
-   assign data_ex1_sel = (dm_sel && ramadr == DATA_EX1_ADDR);
-   assign data_ex1_we  = data_ex1_sel && (ramwe);
-   assign data_ex1_re  = data_ex1_sel && (ramre);
+   assign data_ex1_sel = dm_sel && (ramadr == DATA_EX1_ADDR);
+   assign data_ex1_we  = data_ex1_sel && ramwe;
+   assign data_ex1_re  = data_ex1_sel && ramre;
 
-   assign data_ex2_sel = (dm_sel && ramadr == DATA_EX2_ADDR);
-   assign data_ex2_we  = data_ex2_sel && (ramwe);
-   assign data_ex2_re  = data_ex2_sel && (ramre);
+   assign data_ex2_sel = dm_sel && (ramadr == DATA_EX2_ADDR);
+   assign data_ex2_we  = data_ex2_sel && ramwe;
+   assign data_ex2_re  = data_ex2_sel && ramre;
 
    // Mux the data and enable outputs
-   assign dbus_out =  ({8{ctrl_sel}}     & ctrl_reg)     |
-                      ({8{data_ex1_sel}} & data_ex1_reg) |
-                      ({8{data_ex2_sel}} & data_ex2);
+   assign dbus_out =  ({8{    ctrl_sel  }} & ctrl_reg     ) |
+                      ({8{ data_ex1_sel }} & data_ex1_reg ) |
+                      ({8{ data_ex2_sel }} & data_ex2     );
 
-   assign io_out_en = ctrl_re     ||
+   assign io_out_en =     ctrl_re ||
                       data_ex1_re ||
                       data_ex1_re;
 
@@ -123,27 +120,30 @@ module xlr8_xb  // NOTE: Change the module name to match your design
    // until the net update in value
 
    // Load control register
+   
    always @(posedge clk or negedge rstn) begin
-      if (!rstn)  begin
-         ctrl_reg <= {WIDTH{1'b0}};
-      end else if (clken && ctrl_we) begin
-         ctrl_reg <= dbus_in[WIDTH-1:0];
+      if (!rstn) begin
+        ctrl_reg <= {WIDTH{1'b0}};
+      end
+      else if (clken && ctrl_we) begin
+        ctrl_reg <= dbus_in[WIDTH-1:0];
       end
    end // always @ (posedge clk or negedge rstn)
-
+   
    // load data_ex1 register
    always @(posedge clk or negedge rstn) begin
-      if (!rstn)  begin
-         data_ex1_reg <= {WIDTH{1'b0}};
-      end else if (clken && data_ex1_we) begin
-         data_ex1_reg <= dbus_in[WIDTH-1:0];
+      if (!rstn) begin
+        data_ex1_reg <= {WIDTH{1'b0}};
+      end
+      else if (clken && data_ex1_we) begin
+        data_ex1_reg <= dbus_in[WIDTH-1:0];
       end
    end // always @ (posedge clk or negedge rstn)
-
+   
    // End, Load write data
    //----------------------------------------------------------------------
-
-
+   
+   
    //======================================================================
    // Instantiate user module
    //
@@ -165,5 +165,5 @@ module xlr8_xb  // NOTE: Change the module name to match your design
    // End, Instantiate user module
    //----------------------------------------------------------------------
    
-endmodule // xlr8_xb
+endmodule
 

@@ -8,21 +8,21 @@
 		<user_name>Page_0</user_name>
 		<page_flags>1</page_flags>
 		<bit0>
-			<sof_filename>output_files/xlr8_top.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
+			<sof_filename>../../../XLR8Core/extras/quartus/xlr8_c16_i0_oDefault_x00.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
 		</bit0>
 	</sof_data>
 	<sof_data>
 		<user_name>Page_1</user_name>
 		<page_flags>2</page_flags>
 		<bit0>
-			<sof_filename>output_files/xlr8_top.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
+			<sof_filename>output_files/xlr8_32MHz.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
 		</bit0>
 	</sof_data>
-	<version>9</version>
+	<version>10</version>
 	<create_cvp_file>0</create_cvp_file>
 	<create_hps_iocsr>0</create_hps_iocsr>
 	<auto_create_rpd>1</auto_create_rpd>
-	<create_fif_file>0</create_fif_file>
+	<rpd_little_endian>1</rpd_little_endian>
 	<options>
 		<map_file>1</map_file>
 	</options>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
 <cof>
-	<output_filename>output_files/sno_64MHz.pof</output_filename>
+	<output_filename>output_files/hinj_32MHz.pof</output_filename>
 	<n_pages>2</n_pages>
 	<width>1</width>
 	<mode>14</mode>
@@ -8,14 +8,14 @@
 		<user_name>Page_0</user_name>
 		<page_flags>1</page_flags>
 		<bit0>
-			<sof_filename>../../../XLR8Core/extras/quartus/sno_c16_i0_oDefault_x00.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
+			<sof_filename>../../../XLR8Core/extras/quartus/hinj_c16_i0_oDefault_x00.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
 		</bit0>
 	</sof_data>
 	<sof_data>
 		<user_name>Page_1</user_name>
 		<page_flags>2</page_flags>
 		<bit0>
-			<sof_filename>output_files/sno_64MHz.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
+			<sof_filename>output_files/hinj_32MHz.sof<compress_bitstream>1</compress_bitstream></sof_filename> 
 		</bit0>
 	</sof_data>
 	<version>10</version>

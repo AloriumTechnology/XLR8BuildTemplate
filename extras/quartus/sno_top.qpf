@@ -23,8 +23,10 @@
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "15.1"
+QUARTUS_VERSION = "17.1"
 DATE = "11:49:06  April 19, 2016"
 
 # Revisions
-PROJECT_REVISION = "sno_top"
+PROJECT_REVISION = "sno_16MHz"
+PROJECT_REVISION = "sno_32MHz"
+PROJECT_REVISION = "sno_64MHz"
