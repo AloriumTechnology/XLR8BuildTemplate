@@ -1,0 +1,12 @@
+{
+  "name": "XLR8BuildTemplate",
+  "keywords": "fpga",
+  "description": "Template for building custom designs for XLR8",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AloriumTechnology/XLR8BuildTemplate.git"
+  },
+  "version": "1.0.6",
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
