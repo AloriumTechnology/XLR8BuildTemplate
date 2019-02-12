@@ -1,5 +1,5 @@
 #==============================================================================
-# Copyright (c) 2016 Alorim Technology.  All right reserved.
+# Copyright (c) 2016 Alorium Technology.  All right reserved.
 #==============================================================================
 #
 # File Name  : openxlr8.qsf
@@ -19,7 +19,7 @@
 #==============================================================================
 # Set paths to specifc source files as need here
 
-# Load settings file specific to this OpenXLR8 module
+# Load settings specific to this OpenXLR8 module
 #set_global_assignment -name SYSTEMVERILOG_FILE ../../../XLR8Build/extras/rtl/custom_verilog1.v
 #set_global_assignment -name SYSTEMVERILOG_FILE ../../../XLR8Build/extras/rtl/custom_verilog2.v
 

@@ -1,6 +1,6 @@
 set_global_assignment -name TOP_LEVEL_ENTITY xlr8_alorium_top
 #==============================================================================
-# Copyright (c) 2016 Alorim Technology.  All right reserved.
+# Copyright (c) 2016 Alorium Technology.  All right reserved.
 #==============================================================================
 #
 # File Name  : hinj_16MHz.qsf

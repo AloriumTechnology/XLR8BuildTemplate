@@ -11,11 +11,11 @@ the [Alorium Website](http://aloriumtech.com)
 TOOLS
 -----
 
-1. Download and install Quartus Tool available from Intel by goggling
-   for "Intel Quartus"
+1. Download and install Quartus Tool available from Intel.. The
+   download page can  be found by googling for "Intel Quartus"
     1. This should include Modelsim-Altera Starter Edition and Max 10
        FPGA support
-    2. The current version, 17.7, is supported. Older versions will
+    2. The current version, 17.1, is supported. Older versions will
        fail due to library incompatibilities.
     3. Quartus tools are only available for Windows and Linux. On Mac,
        you'll need to run a VM or some other method to get either a
@@ -75,6 +75,8 @@ Simulation
     4. Upload Action = Send Sketch to Quartus-Modelsim directory
     5. Port = doesn't matter for this step
     6. Sketch->Upload (or hit the Upload button)
+       - This stores the compiled sketch into 
+         XLR8Build/extras/quartus/simulation/modelsim/sketch.dat
 2. In Quartus
     1. Processing->Start->Start Analysis and Elaboration
     2. Tools->Run Simulation Tool->RTL Simulation
