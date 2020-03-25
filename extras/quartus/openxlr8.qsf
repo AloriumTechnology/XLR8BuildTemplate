@@ -11,6 +11,22 @@
 # Quartus settings specific to the OpenXLR8 being developed. This is
 # typically used to include the RTL files needed.
 #
+
+# The following list shows the settings files in the order they are
+# read. Indentation indicates which files are sources by parent
+# files. The [board]_[clock].qsf file is called automatically based on
+# the design revision selected in Quartus. Use the menu item
+# Project->Revisions to selct a revision.
+#
+# +- XLR8Build/extras/quartus/[board]_[clock].qsf
+#    +- XLR8Core/extras/quartus/[board]_top_core.qsf
+#    |  +- XLR8Core/extras/quartus/xlr8_top_core.tcl
+#    |  +- XLR8Core/extras/quartus/xlr8_top.sdc
+#    |     +- XLR8Buildextras/quartus/openxlr8.sdc
+#    +- XLR8Core/extras/quartus/xlr8_base.qsf
+#       +- XLR8Build/extras/quartus/openxlr8.qsf
+#       +- XLR8Build/extras/quartus/openxlr8_builtin.qsf
+
 # Quartus settings for XLR8 project
 #  http://www.aloriumtech.com/xlr8
 #  https://github.com/AloriumTechnology

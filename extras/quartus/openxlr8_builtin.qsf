@@ -25,6 +25,32 @@ set_parameter -name NUM_SERVOS      12
 set_parameter -name NUM_QUADRATURES 6
 set_parameter -name NUM_PIDS        6
 
+# Source code for Built-in XBs. For any builtin XB you are enabling,
+# you must uncomment the set_global_assignment statements below
+# related to each XB enabled. You should also make sure to install the
+# XLR8 library for each XB through the Arduino IDE
+
+# --- Float XB Source Files (XLR8Float Library)--- 
+#set_global_assignment -name SEARCH_PATH ../../../XLR8Float/extras/rtl/xlr8_float
+#set_global_assignment -name SEARCH_PATH ../../../XLR8Float/extras/rtl/xlr8_float/xlr8_float_add1
+#set_global_assignment -name SEARCH_PATH ../../../XLR8Float/extras/rtl/xlr8_float/xlr8_float_mult2
+#set_global_assignment -name VHDL_FILE   ../../../XLR8Float/extras/rtl/xlr8_float/xlr8_float_add1/dspba_library_package.vhd
+#set_global_assignment -name VHDL_FILE   ../../../XLR8Float/extras/rtl/xlr8_float/xlr8_float_add1/dspba_library.vhd
+
+# --- Servo XB Source Files (XLR*Servo Library) ---
+#set_global_assignment -name VERILOG_FILE ../../../XLR8Servo/extras/rtl/xlr8_servo.v
+
+# --- Neopixel XB Source Files (XLR8NeoPixel Library) ---
+#set_global_assignment -name VERILOG_FILE ../../../XLR8NeoPixel/extras/rtl/xlr8_neopixel.v
+#set_global_assignment -name SEARCH_PATH  ../../../XLR8NeoPixel/extras/rtl/ram2p1024x36
+
+# --- Quadrature XB Source Files (XLR8Quadrature Library) ---
+#set_global_assignment -name VERILOG_FILE ../../../XLR8Quadrature/extras/rtl/xlr8_quadrature.v
+
+# --- PID XB Source Files (XLR8PID Library) ---
+#set_global_assignment -name VERILOG_FILE ../../../XLR8PID/extras/rtl/xlr8_pid.v
+
+
 #==============================================================================
 
 # The XLR8 top level contains some "built-in" function units that are
