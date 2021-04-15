@@ -170,6 +170,9 @@ module openxlr8
    // Add additional wires and regs here as needed to connect your XBs
    // to the combining logic and to each other if needed. At minimum,
    // with a single XB, you'll need at least something like this:
+
+   logic [7:0]                        pcint_dbus_out, xb_info_dbus_out;
+   logic                              pcint_out_en,   xb_info_out_en;
    
    // logic [7:0]		xb1_dbusout;
    // logic 			xb1_out_en;
@@ -303,11 +306,15 @@ module openxlr8
    //                      xb2_out_en ||
    //                      xb3_out_en;
    //
-   // If no XBs are being instantiated then set values to zero like 
-   // this:
-   assign dbus_out = 8'h00;
-   assign io_out_en = 1'h0;
+   // The default with no user XBs is to just assign the pcint and
+   // xb_info outputs:
    
+   assign dbus_out  = pcint_out_en   ? pcint_dbus_out :
+                      xb_info_out_en ? xb_info_dbus_out :
+                                       8'h00;
+   assign io_out_en = pcint_out_en || 
+                      xb_info_out_en;
+
    // End of combining logic
    //----------------------------------------------------------------------
 
@@ -319,9 +326,6 @@ module openxlr8
    // following line that ties off the xb_irq output and instead
    // uncomment the following instantiation of the xlr8_pcint module
 
-   assign xb_irq = 1'b0; // DELETE THIS LINE IF YOU UNCOMMENT THE XLR8_PCINT
-   
-/* 
    localparam NUM_INTS = 1; // EDIT to be equal to the number of interrupts
 
    xlr8_pcint
@@ -338,22 +342,63 @@ module openxlr8
       .clk          (clk),
       // I/O
       .adr          (adr),
-      .dbus_in      (dbusin),
-      .dbus_out     (dbus_out),
+      .dbus_in      (dbus_in),
+      .dbus_out     (pcint_dbus_out),
       .iore         (iore),
       .iowe         (iowe),
-      .out_en       (io_out_en),
+      .out_en       (pcint_out_en),
       // DM
       .ramadr       (ramadr),
       .ramre        (ramre),
       .ramwe        (ramwe),
       .dm_sel       (dm_sel),
       // 
-      .x_int_in     (), // INSERT YOUR XB INTERRUPTS HERE 
+      .x_int_in     (1'b0), // INSERT YOUR XB INTERRUPTS HERE 
       .x_irq        (xb_irq),
       .x_irq_ack    () // Don't use acks here
       );
-*/   
+
+
+   //----------------------------------------------------------------------
+   // 7.) Info Regs
+   //
+   // The xb_info module allows the user to include user defined CSR
+   // regs in the OpenXLR8 that can ge read back with the GetXLR8Info
+   // sketch. This allows the user to know what XB implementation is
+   // loaded into the XLR8
+
+   // Define the values to be passed into the xb_info module
+   localparam XB_INFO_NUM_VAL     = 8'h03;  // Number of additional XB_INFO regs
+   localparam XB_INFO_VENDOR_VAL  = 8'h11;  // Vendor Code Value
+   localparam XB_INFO_XBTYPE_VAL  = 8'h12;  // XB Implementation Number
+   localparam XB_INFO_XBVER_VAL   = 8'h13;  // XB Implementation Version Number
+
+   // Instantiate the xb_info module
+   xb_info
+     #(.XB_INFO_ADDR        (XB_INFO_ADDR), // Defined in xb_adr_pack.vh, default = 8'hFF
+       .XB_INFO_NUM_VAL     (XB_INFO_NUM_VAL),     
+       .XB_INFO_VENDOR_VAL  (XB_INFO_VENDOR_VAL),  
+       .XB_INFO_XBTYPE_VAL  (XB_INFO_XBTYPE_VAL),
+       .XB_INFO_XBVER_VAL   (XB_INFO_XBVER_VAL)
+       )
+   xb_info_inst
+     (
+      // Clock and Reset
+      .rstn         (rstn),
+      .clk          (clk),
+      // I/O
+      .adr          (adr),
+      .dbus_in      (dbus_in),
+      .dbus_out     (xb_info_dbus_out),
+      .iore         (iore),
+      .iowe         (iowe),
+      .out_en       (xb_info_out_en),
+      // DM
+      .ramadr       (ramadr),
+      .ramre        (ramre),
+      .ramwe        (ramwe),
+      .dm_sel       (dm_sel)
+      );
    
 endmodule // openxlr8
 

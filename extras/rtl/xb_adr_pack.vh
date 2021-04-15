@@ -181,5 +181,5 @@
 // localparam UNUSED          = 8'hFC; // --UNUSED-- -- Unless Builtin Servo Installed --
 // localparam UNUSED          = 8'hFD; // --UNUSED-- -- Unless Builtin Servo Installed --
 // localparam UNUSED          = 8'hFE; // --UNUSED--
-// localparam UNUSED          = 8'hFF; // --UNUSED--
+//localparam XB_INFO_ADDR      = 8'hFF; // Default address for XB_INFO CSR
 //----------------------------------------------------------------------
