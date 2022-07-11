@@ -245,7 +245,16 @@ module openxlr8
    // provide signals as outputs from the XB that should be connected
    // to the xbs_pvoe and xbs_pvov signals.
    
-   // On XLR8/UNO, bus is [19:0]={portc[5:0],portb[5:0],portd[7:0]}
+   // IMPORTANT: There is a gap in the pin numbering at [21:20] that
+   // is not included in the XBS_* busses. So, all pin numbers above
+   // 19 should subtract 2 to determine the correct xbs_* bit
+   
+   //                       xbs_*     D Pins   Ports
+   //                     --------   -------   ------------------------------------
+   // On XLR8/UNO, bus is  [19:00] =  D19-00 = {portc[5:0],portb[5:0],portd[7:0]}
+   // For All Sno boards:  [39:20] =  D41-22 = {portg[7:0],porte[5:0],porta[5:0]}
+   // For Sno M2:          [47:40] =  D49-42 = {porth[7:0]}
+   // For Sno Edge:       [107:40] = D109-42 = {portpl[3:0],portk[31:0],portj[31:0]}
 
    assign xbs_ddoe[0] = {NUM_PINS{1'b0}}; 
    assign xbs_ddov[0] = {NUM_PINS{1'b0}};

@@ -1,3 +1,4 @@
+
 //===========================================================================
 //  Copyright(c) Alorium Technology Group Inc., 2018
 //  ALL RIGHTS RESERVED
@@ -64,6 +65,8 @@
 // 
 //===========================================================================
 
+`ifndef _XLR8_PLL_DONE 
+  `define _XLR8_PLL_DONE      // set flag that pkg already included 
 
 // Create the clock called "clk_option2"
 // The following creates a 64MHz clock with a 45 degree phase shift
@@ -78,5 +81,7 @@ localparam XLR8_PLL_CLK4_DIVIDE_BY = 1;
 localparam XLR8_PLL_CLK4_DUTY_CYCLE = 50;
 localparam XLR8_PLL_CLK4_MULTIPLY_BY = 2;
 localparam XLR8_PLL_CLK4_PHASE_SHIFT = "1953";
+
+`endif
 
 

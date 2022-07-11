@@ -3,7 +3,7 @@ set_global_assignment -name TOP_LEVEL_ENTITY xlr8_alorium_top
 # Copyright (c) 2016 Alorium Technology.  All right reserved.
 #==============================================================================
 #
-# File Name  : hinj_16MHz.qsf
+# File Name  : snoedge_32MHz.qsf
 # Author     : Steve Phillips
 # Contact    : support@aloriumtech.com
 # Description:
@@ -21,16 +21,16 @@ set_global_assignment -name TOP_LEVEL_ENTITY xlr8_alorium_top
 #------------------------------------------------------------------------------
 # Set the values in this section based on the clock speed desired
 
-# Set values for DESIGN_CONFIG. Use 16MHz=3208, 32MHz=3210, 64MHz=3212
-set_parameter -name DESIGN_CONFIG 3208
+# Set values for DESIGN_CONFIG. Use 16MHz=1608, 32MHz=1610, 64MHz=1612
+set_parameter -name DESIGN_CONFIG 1610
 
 # Select AVR core based on Clock speed
-set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/hinj_atmega328clone_16MHz.qxp
+set_global_assignment -name QXP_FILE ../../../XLR8Core/extras/quartus/snoedge_atmega328clone_32MHz.qxp
 
 #------------------------------------------------------------------------------
 # Load standard settings that apply to all XLR8 builds
 
-source ../../../XLR8Core/extras/quartus/hinj_top_core.qsf
+source ../../../XLR8Core/extras/quartus/snoedge_top_core.qsf
 source ../../../XLR8Core/extras/quartus/xlr8_base.qsf
 
 #------------------------------------------------------------------------------
